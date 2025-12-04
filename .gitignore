@@ -1,0 +1,62 @@
+# ------------------------------
+# Advent of Code – DO NOT COMMIT
+# ------------------------------
+
+# Your personal puzzle input files
+# (These differ per user; the FAQ explicitly discourages sharing them.)
+**/input.txt
+**/description.txt
+**/Description.txt
+
+# ------------------------------
+# Python / uv / cache files
+# ------------------------------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.venv/
+venv/
+uv_env/
+uv_cache/
+.uv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# ------------------------------
+# Testing / notebooks / debugging
+# ------------------------------
+
+# pytest cache
+.pytest_cache/
+
+# Jupyter notebooks (if you use scratch notebooks)
+*.ipynb_checkpoints/
+.ipynb_checkpoints/
+
+# Scratch files you may create while prototyping
+scratch/
+tmp/
+temp/
+
+# ------------------------------
+# Editors / OS noise
+# ------------------------------
+
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
