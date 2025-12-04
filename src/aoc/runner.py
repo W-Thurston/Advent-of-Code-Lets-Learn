@@ -7,8 +7,10 @@ if TYPE_CHECKING:
 
 
 def run(year: int, day: int) -> None:
-    module: ModuleType = importlib.import_module(f"aoc{year}.src.day{day:02d}")
-    data = module.parse(f"aoc{year}/solutions/day{day:02d}/input.txt")
+    module: ModuleType = importlib.import_module(
+        f"src.aoc{year}.solutions.day{day:02d}.solution"
+    )
+    data = module.parse(f"src/aoc{year}/solutions/day{day:02d}/input.txt")
     print("Part 1:", module.part1(data))
     print()
     print("Part 2:", module.part2(data))

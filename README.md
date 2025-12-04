@@ -44,8 +44,7 @@ AoC shapes the daily topics.
 This repo supports **multiple years** of Advent of Code.
 Each year includes:
 
-* **src/** - first-pass daily solutions
-* **solutions/** - refactored, polished versions
+* **solutions/** - first-pass daily solutions and refactored, polished versions
 * **posts/** - teaching-oriented write-ups
 * **tests/** - optional tests per day
 
@@ -61,31 +60,29 @@ advent-of-code-lets-learn/
 │       │   ├── grid.py
 │       │   └── graph.py
 │       └── runner.py
-│
-├── aoc2025/                  # or 2024, 2023, etc.
-│   ├── src/                  # first-draft daily solutions
-│   │   ├── day01.py
-│   │   ├── day02.py
-│   │   └── ...
-│   ├── solutions/            # refactored teaching-quality versions
-│   │   ├── day01/
-│   │   │   ├── Description.txt # ignored - Puzzle text
-│   │   │   ├── example.txt   # example from puzzle text
-│   │   │   ├── input.txt     # ignored - personal puzzle input
-│   │   │   ├── notes.md      # journal entry
-│   │   │   └── solution.py   # optimized solutions
-│   │   └── ...
-│   ├── posts/                # blog-style daily write-ups
-│   │   ├── day01.md
-│   │   └── ...
+│   └── aoc2025/                    # or 2024, 2023, etc.
+│   │   ├── posts/                      # blog-style daily write-ups
+│   │   │   ├── day01.md
+│   │   │   └── ...
+│   │   ├── solutions/
+│   │   │   ├── day01/
+│   │   │   │   ├── Description.txt # ignored - Puzzle text
+│   │   │   │   ├── example.txt     # example from puzzle text
+│   │   │   │   ├── input.txt       # ignored - personal puzzle input
+│   │   │   │   ├── notes.md        # journal entry
+│   │   │   │   ├── optimized.py    # optimized solutions
+│   │   │   │   ├── solution.py     # first-draft daily solutions
+│   │   │   └── ...
 │   └── tests/
 │       ├── test_day01.py     # Optional tests
 │       └── ...
-│
 ├── .gitignore
+├── .python-version
+├── LICENSE
+├── main.py
 ├── pyproject.toml
-├── uv.lock
-└── README.md
+├── README.md
+└── uv.lock
 ```
 
 ---
@@ -105,7 +102,7 @@ uv sync
 Run any solution:
 
 ```bash
-uv run python -m aoc.runner 2025 1
+uv run python -m src.aoc.runner yyyy dd
 ```
 
 (This runs *Year 2025, Day 1* using your first-draft implementation.)
