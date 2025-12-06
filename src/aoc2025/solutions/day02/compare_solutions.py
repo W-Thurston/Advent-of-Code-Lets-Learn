@@ -87,6 +87,7 @@ def compare_solutions(
         List of SolutionResult objects with timing data
 
     """
+    print("[WARNING] This takes about 20 minutes to complete.")
     if solutions is None:
         solutions = ["initial", "basic", "optimized", "elegant"]
 
