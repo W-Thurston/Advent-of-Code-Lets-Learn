@@ -175,40 +175,6 @@ def print_comparison(results: list[SolutionResult]) -> None:
         print(f"🏆 Fastest Part 2: {fastest_p2.name}")
 
 
-def run_comparison(
-    input_path: str | Path,
-    solutions: list[str] | None = None,
-    runs: int = 100,
-) -> None:
-    """
-    Main entry point for comparing solutions.
-
-    Args:
-        input_path: Path to puzzle input file
-        solutions: List of solution names to compare
-        runs: Number of timing runs per solution
-
-    """
-    # Use the first available solution's parse function
-    if solutions is None:
-        solutions = ["initial", "basic", "optimized", "elegant"]
-
-    # Load first available solution to get parse function
-    for solution_name in solutions:
-        try:
-            module: ModuleType = load_solution(solution_name)
-            data = module.parse(input_path)
-            break
-        except ImportError:
-            continue
-    else:
-        raise ImportError("Could not load any solution module")
-
-    # Run comparison
-    results: list[SolutionResult] = compare_solutions(data, solutions, runs)
-    print_comparison(results)
-
-
 # =============================================================================
 # MAIN
 # =============================================================================

@@ -1,5 +1,5 @@
 """
-Advent of Code 2025 - Day 2: Gift Shop.
+Advent of Code 2025 - Day 4: Printing Department.
 
 Comparison framework for evaluating different solution approaches.
 """
@@ -53,7 +53,7 @@ class SolutionResult:
         )
 
 
-def load_solution(solution_name: str, year: int = 2025, day: int = 2) -> ModuleType:
+def load_solution(solution_name: str, year: int = 2025, day: int = 4) -> ModuleType:
     """
     Dynamically load a solution module.
 
@@ -87,7 +87,6 @@ def compare_solutions(
         List of SolutionResult objects with timing data
 
     """
-    print("[WARNING] This takes about 20 minutes to complete.")
     if solutions is None:
         solutions = ["initial", "basic", "optimized", "elegant"]
 
@@ -137,7 +136,7 @@ def compare_solutions(
 
 def print_comparison(results: list[SolutionResult]) -> None:
     """Pretty print the comparison results."""
-    line_length = 90
+    line_length = 80
     print("\n" + "=" * line_length)
     print("SOLUTION COMPARISON")
     print("=" * line_length)
@@ -180,17 +179,17 @@ def print_comparison(results: list[SolutionResult]) -> None:
 # MAIN
 # =============================================================================
 if __name__ == "__main__":
-    from src.aoc2025.solutions.day02.utils import parse
+    from src.aoc2025.solutions.day04.utils import parse
 
     # Example data
-    example: list[str] = parse("src/aoc2025/solutions/day02/example.txt")
+    example: list[str] = parse("src/aoc2025/solutions/day04/example.txt")
     print("Testing with example data:")
     results: list[SolutionResult] = compare_solutions(example, runs=1000)
     print_comparison(results)
 
     # Real data
     try:
-        data: list[str] = parse("src/aoc2025/solutions/day02/input.txt")
+        data: list[str] = parse("src/aoc2025/solutions/day04/input.txt")
         print("\n\nTesting with real puzzle input:")
         results = compare_solutions(data, runs=100)
         print_comparison(results)

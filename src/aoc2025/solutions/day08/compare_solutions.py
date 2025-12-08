@@ -1,5 +1,5 @@
 """
-Advent of Code 2025 - Day 2: Gift Shop.
+Advent of Code 2025 - Day 8: Playground.
 
 Comparison framework for evaluating different solution approaches.
 """
@@ -7,7 +7,6 @@ Comparison framework for evaluating different solution approaches.
 import importlib
 import time
 from dataclasses import dataclass
-from pathlib import Path
 from types import ModuleType
 
 
@@ -53,7 +52,7 @@ class SolutionResult:
         )
 
 
-def load_solution(solution_name: str, year: int = 2025, day: int = 2) -> ModuleType:
+def load_solution(solution_name: str, year: int = 2025, day: int = 8) -> ModuleType:
     """
     Dynamically load a solution module.
 
@@ -74,6 +73,7 @@ def compare_solutions(
     data: list[str],
     solutions: list[str] | None = None,
     runs: int = 100,
+    n_closest_edges: int = 1000,
 ) -> list[SolutionResult]:
     """
     Compare multiple solutions for correctness and performance.
@@ -82,12 +82,12 @@ def compare_solutions(
         data: Parsed puzzle input
         solutions: List of solution names to compare (defaults to all)
         runs: Number of times to run each solution for timing
+        n_closest_edges: number of pairs of junction boxes
 
     Returns:
         List of SolutionResult objects with timing data
 
     """
-    print("[WARNING] This takes about 20 minutes to complete.")
     if solutions is None:
         solutions = ["initial", "basic", "optimized", "elegant"]
 
@@ -101,7 +101,7 @@ def compare_solutions(
             # Time Part 1
             start: float = time.perf_counter()
             for _ in range(runs):
-                p1_answer = module.part1(data)
+                p1_answer = module.part1(data, n_closest_edges)
             p1_time: float = (time.perf_counter() - start) / runs
 
             # Time Part 2
@@ -180,19 +180,23 @@ def print_comparison(results: list[SolutionResult]) -> None:
 # MAIN
 # =============================================================================
 if __name__ == "__main__":
-    from src.aoc2025.solutions.day02.utils import parse
+    from src.aoc2025.solutions.day08.utils import parse
 
     # Example data
-    example: list[str] = parse("src/aoc2025/solutions/day02/example.txt")
+    example: list[str] = parse("src/aoc2025/solutions/day08/example.txt")
     print("Testing with example data:")
-    results: list[SolutionResult] = compare_solutions(example, runs=1000)
+    results: list[SolutionResult] = compare_solutions(
+        example,
+        runs=1000,
+        n_closest_edges=10,
+    )
     print_comparison(results)
 
     # Real data
     try:
-        data: list[str] = parse("src/aoc2025/solutions/day02/input.txt")
+        data: list[str] = parse("src/aoc2025/solutions/day08/input.txt")
         print("\n\nTesting with real puzzle input:")
-        results = compare_solutions(data, runs=100)
+        results = compare_solutions(data, runs=100, n_closest_edges=1000)
         print_comparison(results)
     except FileNotFoundError:
         print("\n(Real puzzle input not found - skipping)")

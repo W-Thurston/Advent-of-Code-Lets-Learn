@@ -5,6 +5,8 @@ description = "A Let's Learn series exploring Advent of Code by solving, analyzi
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "numpy>=2.3.5",
+    "scipy>=1.16.3",
     "tqdm>=4.67.1",
 ]
 
