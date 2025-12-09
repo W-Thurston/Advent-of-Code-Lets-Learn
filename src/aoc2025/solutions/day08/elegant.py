@@ -60,8 +60,8 @@ def parse_points(data: list[str]) -> list[Point3D]:
     return pts
 
 
-def sorted_edges(points: list[Point3D]) -> list[tuple[int, int, int]]:
-    edges: list[tuple[int, int, int]] = []
+def sorted_edges(points: list[Point3D]) -> list[tuple[int]]:
+    edges: list[tuple[int]] = []
     n: int = len(points)
     for i in range(n):
         p1: Point3D = points[i]
@@ -82,7 +82,7 @@ def part1(data: list[str], n_closest_edges: int = 1000) -> int:
     if n == 0:
         return 0
 
-    edges: list[tuple[int, int, int]] = sorted_edges(points)
+    edges: list[tuple[int]] = sorted_edges(points)
     dsu = DSU(n)
 
     for _dist_sq, a, b in edges[: min(n_closest_edges, len(edges))]:
@@ -106,7 +106,7 @@ def part2(data: list[str]) -> int:
     if n == 1:
         return points[0].x * points[0].x
 
-    edges: list[tuple[int, int, int]] = sorted_edges(points)
+    edges: list[tuple[int]] = sorted_edges(points)
     dsu = DSU(n)
 
     for _dist_sq, a, b in edges:

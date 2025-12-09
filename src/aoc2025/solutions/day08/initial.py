@@ -20,13 +20,13 @@ def find_circuit(circuits, point) -> None | int:
 
 def part1(data: list[str], n_closest_edges: int = 1000) -> int:
     # Parse the points
-    points: list[tuple[int, int, int]] = []
+    points: list[tuple[int]] = []
     for line in data:
         x, y, z = map(int, line.split(","))
         points.append((x, y, z))
 
     # Compute all pairwise distances
-    pairs: list[tuple[int, int, int]] = []
+    pairs: list[tuple[int]] = []
     n: int = len(points)
     for i in range(n):
         for j in range(i + 1, n):
@@ -66,13 +66,13 @@ def part1(data: list[str], n_closest_edges: int = 1000) -> int:
 
 def part2(data: list[str]) -> int:
     # Parse the points
-    points: list[tuple[int, int, int]] = []
+    points: list[tuple[int]] = []
     for line in data:
         x, y, z = map(int, line.split(","))
         points.append((x, y, z))
 
     # Compute all pairwise distances
-    pairs: list[tuple[int, int, int]] = []
+    pairs: list[tuple[int]] = []
     n: int = len(points)
     for i in range(n):
         for j in range(i + 1, n):

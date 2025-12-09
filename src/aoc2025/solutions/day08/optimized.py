@@ -9,8 +9,8 @@ Optimized solution:
 # =============================================================================
 
 
-def parse_points(data: list[str]) -> list[tuple[int, int, int]]:
-    pts: list[tuple[int, int, int]] = []
+def parse_points(data: list[str]) -> list[tuple[int]]:
+    pts: list[tuple[int]] = []
     for line in data:
         line: str = line.strip()  # noqa: PLW2901
         if not line:
@@ -40,9 +40,9 @@ def dsu_union(parent: list[int], size: list[int], a: int, b: int) -> bool:
     return True
 
 
-def compute_edges(points: list[tuple[int, int, int]]) -> list[tuple[int, int, int]]:
+def compute_edges(points: list[tuple[int]]) -> list[tuple[int]]:
     """Squared distances; returns sorted list of (dist_sq, i, j)."""
-    edges: list[tuple[int, int, int]] = []
+    edges: list[tuple[int]] = []
     n: int = len(points)
     for i in range(n):
         x1, y1, z1 = points[i]
@@ -57,12 +57,12 @@ def compute_edges(points: list[tuple[int, int, int]]) -> list[tuple[int, int, in
 
 
 def part1(data: list[str], n_closest_edges: int = 1000) -> int:
-    points: list[tuple[int, int, int]] = parse_points(data)
+    points: list[tuple[int]] = parse_points(data)
     n: int = len(points)
     if n == 0:
         return 0
 
-    edges: list[tuple[int, int, int]] = compute_edges(points)
+    edges: list[tuple[int]] = compute_edges(points)
     parent: list[int] = list(range(n))
     size: list[int] = [1] * n
 
@@ -89,7 +89,7 @@ def part1(data: list[str], n_closest_edges: int = 1000) -> int:
 
 
 def part2(data: list[str]) -> int:
-    points: list[tuple[int, int, int]] = parse_points(data)
+    points: list[tuple[int]] = parse_points(data)
     n: int = len(points)
     if n == 0:
         return 0
@@ -97,7 +97,7 @@ def part2(data: list[str]) -> int:
         x, _, _ = points[0]
         return x * x
 
-    edges: list[tuple[int, int, int]] = compute_edges(points)
+    edges: list[tuple[int]] = compute_edges(points)
     parent: list[int] = list(range(n))
     size: list[int] = [1] * n
     components: int = n

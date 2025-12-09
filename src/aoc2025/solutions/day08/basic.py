@@ -11,8 +11,8 @@ import math
 # =============================================================================
 
 
-def parse_points(data: list[str]) -> list[tuple[int, int, int]]:
-    pts: list[tuple[int, int, int]] = []
+def parse_points(data: list[str]) -> list[tuple[int]]:
+    pts: list[tuple[int]] = []
     for line in data:
         line: str = line.strip()  # noqa: PLW2901
         if not line:
@@ -27,9 +27,9 @@ def euclid(p, q) -> float:
     return math.sqrt((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2 + (p[2] - q[2]) ** 2)
 
 
-def build_edges(points) -> list[tuple[int, int, int]]:
+def build_edges(points) -> list[tuple[int]]:
     """Brute-force all pairwise distances."""
-    edges: list[tuple[int, int, int]] = []
+    edges: list[tuple[int]] = []
     n: int = len(points)
     for i in range(n):
         for j in range(i + 1, n):
@@ -60,12 +60,12 @@ def merge_components(components, a, b) -> bool:
 
 
 def part1(data: list[str], n_closest_edges: int = 1000) -> int:
-    points: list[tuple[int, int, int]] = parse_points(data)
+    points: list[tuple[int]] = parse_points(data)
     n: int = len(points)
     if n == 0:
         return 0
 
-    edges: list[tuple[int, int, int]] = build_edges(points)
+    edges: list[tuple[int]] = build_edges(points)
     components: list[set[int]] = build_components_bruteforce(n)
 
     # Take first 1000 edges
@@ -84,7 +84,7 @@ def part1(data: list[str], n_closest_edges: int = 1000) -> int:
 
 
 def part2(data: list[str]) -> int:
-    points: list[tuple[int, int, int]] = parse_points(data)
+    points: list[tuple[int]] = parse_points(data)
     n: int = len(points)
     if n == 0:
         return 0
@@ -92,7 +92,7 @@ def part2(data: list[str]) -> int:
         x, _, _ = points[0]
         return x * x
 
-    edges: list[tuple[int, int, int]] = build_edges(points)
+    edges: list[tuple[int]] = build_edges(points)
     components: list[set[int]] = build_components_bruteforce(n)
 
     for _dist, a, b in edges:

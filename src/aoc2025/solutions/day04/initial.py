@@ -11,6 +11,8 @@ My initial working solution - first draft before refactoring.
 def part1(data: list[str]) -> int:
     verbose: bool = False
 
+    data: list[list[str]] = [list(row.rstrip()) for row in data]
+
     width: int = len(data[0])
     length: int = len(data)
 
@@ -95,6 +97,8 @@ def part1(data: list[str]) -> int:
 
 def part2(data: list[str]) -> int:
     verbose: bool = False
+
+    data: list[list[str]] = [list(row.rstrip()) for row in data]
 
     width: int = len(data[0])
     length: int = len(data)
